@@ -21,6 +21,7 @@ class Card {
 	int type;
 	int idnumber;
 public:
+	Card();
 	Card(int);   //Loads card from corresponding file according to id
 	int getType() {return type;}
 	int getMana() {return mana;}

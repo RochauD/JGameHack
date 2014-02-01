@@ -4,7 +4,7 @@
 #include <sstream>
 #include <iomanip>
 #include <stdlib.h>
-
+#include "Card.h"
 /*
 	structure of card file:
 	name
@@ -16,6 +16,10 @@
 		health
 		steps
 */
+
+Card::Card() {
+	  //Required for creating empty array
+}
 
 Card::Card(int id) {
 
