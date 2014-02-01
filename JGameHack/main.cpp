@@ -2,15 +2,17 @@
 //
 
 #include "stdafx.h"
-#include "resourceManager.h"
+#include "textureManager.h"
 
-resourceManager gTextureManager;
+textureManager gTextureManager;
 
 int main(int argc, char* argv[])
 {
 	// Create the main window
 	sf::RenderWindow window(sf::VideoMode(1600, 900), "JGameHack");
 	
+
+	// Initalize texture Handler
 	gTextureManager.setFileDirectory("bin/textures/");
 
 	sf::Texture testTex;
@@ -19,8 +21,8 @@ int main(int argc, char* argv[])
 
 
 
-	gTextureManager.loadResource(&test, &testTex);
-	gTextureManager.loadResource(&test, &testTex2);
+	gTextureManager.loadTexture(&test, &testTex);
+	gTextureManager.loadTexture(&test, &testTex2);
 
 
 
