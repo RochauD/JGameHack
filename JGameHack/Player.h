@@ -1,6 +1,9 @@
-#include "stdafx.h"
 #include "Card.h"
 #include <vector> 
+
+
+#ifndef _PLAYER_
+#define _PLAYER_
 
 class Player{
 	const static int DEFAULT_HP = 200;
@@ -26,4 +29,6 @@ public:
 	int getCardNumber();
 
 	const static int MAX_CARDS = 5;
-}
+};
+
+#endif
