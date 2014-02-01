@@ -35,7 +35,7 @@ bool resourceManager::loadResource(std::string* fileName, sf::Texture* pTexture)
 	else
 	{
 		sf::Texture* curTexture = new sf::Texture();
-		if (!curTexture->loadFromFile("bin/textures/test.png"))///fileDirectory + (*fileName)))
+		if (!curTexture->loadFromFile(fileDirectory + (*fileName)))
 		{
 			return false;
 		}
