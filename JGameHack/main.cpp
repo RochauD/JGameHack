@@ -2,6 +2,7 @@
 //
 
 #include "stdafx.h"
+#include "resourceManager.h"
 
 
 
@@ -10,6 +11,14 @@ int main(int argc, char* argv[])
 	// Create the main window
 	sf::RenderWindow window(sf::VideoMode(1600, 900), "JGameHack");
 	
+	sf::Texture testTex;
+	if (!testTex.loadFromFile("bin/textures/test.png"))
+	{
+		window.setTitle("error");
+	}
+
+	sf::Sprite testSprite;
+	testSprite.setTexture(testTex);
 
 	// Start the game loop
 	while (window.isOpen())
@@ -26,6 +35,8 @@ int main(int argc, char* argv[])
 		window.clear();
 
 		//Draw stuff in here
+
+		window.draw(testSprite);
 
 		// Update the window
 		window.display();

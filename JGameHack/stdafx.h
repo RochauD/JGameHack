@@ -19,9 +19,13 @@
 
 // TODO: reference additional headers your program requires here
 
+#include <string>
+#include <map>
+#include <utility>
 
 #include <SFML\Graphics.hpp>
 #include <SFML\Audio.hpp>
 #include <SFML\Network.hpp>
 #include <SFML\Config.hpp>
 #include <SFML\OpenGL.hpp>
+
