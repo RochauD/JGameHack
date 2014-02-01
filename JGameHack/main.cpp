@@ -4,18 +4,24 @@
 #include "stdafx.h"
 #include "resourceManager.h"
 
-
+resourceManager gTextureManager;
 
 int main(int argc, char* argv[])
 {
 	// Create the main window
 	sf::RenderWindow window(sf::VideoMode(1600, 900), "JGameHack");
 	
+	gTextureManager.setFileDirectory("bin/textures/");
+
 	sf::Texture testTex;
-	if (!testTex.loadFromFile("bin/textures/test.png"))
-	{
-		window.setTitle("error");
-	}
+	std::string test("test.png");
+
+
+
+	gTextureManager.loadResource(&test, &testTex);
+
+
+
 
 	sf::Sprite testSprite;
 	testSprite.setTexture(testTex);

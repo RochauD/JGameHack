@@ -24,11 +24,6 @@ std::string resourceManager::getFileDirectory()
 }
 
 
-void resourceManager::incrementUsageCount(std::string* key)
-{
-	(this->resourceMap[*key]).first = ((this->resourceMap[*key]).first)++;
-}
-
 
 bool resourceManager::loadResource(std::string* fileName, sf::Texture* pTexture)
 {
@@ -40,13 +35,14 @@ bool resourceManager::loadResource(std::string* fileName, sf::Texture* pTexture)
 	else
 	{
 		sf::Texture* curTexture = new sf::Texture();
-		if (!curTexture->loadFromFile(fileDirectory + (*fileName)))
+		if (!curTexture->loadFromFile("bin/textures/test.png"))///fileDirectory + (*fileName)))
 		{
 			return false;
 		}
 		else
 		{
 			this->resourceMap.insert(std::pair<std::string, intTexturePair>(*fileName ,intTexturePair(1, curTexture)));
+			*pTexture = *curTexture;
 		}
 	}	
 	return true;

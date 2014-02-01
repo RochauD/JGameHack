@@ -20,8 +20,6 @@ public:
 	void setFileDirectory(std::string path);
 	std::string getFileDirectory();
 
-	void incrementUsageCount(std::string* key);
-
 
 	bool loadResource(std::string* fileName, sf::Texture* pTexture);
 	void deleteResource(std::string* fileName);
