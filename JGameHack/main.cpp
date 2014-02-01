@@ -14,11 +14,13 @@ int main(int argc, char* argv[])
 	gTextureManager.setFileDirectory("bin/textures/");
 
 	sf::Texture testTex;
+	sf::Texture testTex2;
 	std::string test("test.png");
 
 
 
 	gTextureManager.loadResource(&test, &testTex);
+	gTextureManager.loadResource(&test, &testTex2);
 
 
 
