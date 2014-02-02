@@ -33,11 +33,12 @@ int main(int argc, char* argv[])
 
 
 	//initalize background
-	gSpriteManager->addNewSprite(&std::string("background.png"), -100);
+	sf::Sprite* backgroundSprite = gSpriteManager->addNewSprite(&std::string("background.png"), -100);
 	
 	grid gameGrid;
 	gameGrid.SetSpriteManager(gSpriteManager);
 	gameGrid.SetWindow(gWindow);
+	gameGrid.SetUpGrid();
 
 
 	// Start the game loop
@@ -69,11 +70,9 @@ int main(int argc, char* argv[])
 		window.display();
 	}
 
-	gTextureManager->deleteTexture(&std::string("background.png"));
-
+	gSpriteManager->deleteSprite(backgroundSprite, &std::string("background.png"));
+	gSpriteManager->DeleteAll();
 	return EXIT_SUCCESS;
-
-	return 0;
 }
 
 

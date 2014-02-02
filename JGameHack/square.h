@@ -12,13 +12,17 @@ private:
 	bool owner;
 	spriteManager* mSpriteManager;
 	sf::RenderWindow* mWindow;
-	sf::Sprite mSprite;
-
+	sf::Sprite* mSprite;
+	std::string fileName;
 
 public:
 	void SetSpriteManager(spriteManager* pSpriteManager);
 	void SetWindow(sf::RenderWindow* pWindow);
+	sf::Sprite* GetSprite();
 
+
+	void SetUp();
+	void SetFileName(std::string fileName);
 
 
 	square();

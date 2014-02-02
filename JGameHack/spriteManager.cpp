@@ -9,6 +9,7 @@ spriteManager::spriteManager()
 
 spriteManager::~spriteManager()
 {
+	DeleteAll();
 }
 
 void spriteManager::SetTextureManager(textureManager* pTextureManager)
@@ -23,7 +24,7 @@ void spriteManager::SetWindow(sf::RenderWindow* pWindow)
 sf::Sprite* spriteManager::addNewSprite(std::string* filename, int zValue)
 {
 	sf::Sprite* curSprite = new sf::Sprite();
-	sf::Texture* loadingTexture;
+	static sf::Texture* loadingTexture;
 	if (!this->mTextureManager->loadTexture(filename, &loadingTexture))
 	{
 		EXIT_FAILURE;
@@ -38,11 +39,31 @@ sf::Sprite* spriteManager::addNewSprite(std::string* filename, int zValue)
 	}
 }
 
-void spriteManager::deleteSprite(sf::Sprite* pSprite)
+void spriteManager::deleteSprite(sf::Sprite* pSprite, std::string* fileName)
 {
 	spriteSet::iterator iter = findSprite(pSprite);
+	this->mTextureManager->deleteTexture(fileName);
 	delete iter->second;
 	this->mSpriteSet.erase(iter);
+}
+
+bool spriteManager::changeTexture(sf::Sprite* pSprite, std::string* filename, int zValue)
+{
+	spriteSet::iterator iter = findSprite(pSprite);
+	this->mSpriteSet.erase(iter);
+	static sf::Texture* loadingTexture;
+	if (!this->mTextureManager->loadTexture(filename, &loadingTexture))
+	{
+		return EXIT_FAILURE;
+	}
+	else
+	{
+		iter->second->setTexture(*loadingTexture);
+		typedef std::pair<int, sf::Sprite*> spritePair;
+		this->mSpriteSet.insert(spritePair(zValue, iter->second));
+		return true;
+	}
+
 }
 
 spriteSet::iterator spriteManager::findSprite(sf::Sprite* pSprite)
@@ -63,5 +84,14 @@ void spriteManager::DrawAll()
 	for (spriteSet::iterator iter = this->mSpriteSet.begin(); iter != this->mSpriteSet.end(); iter++)
 	{
 		(this->mWindow)->draw(*iter->second);
+	}
+}
+
+void spriteManager::DeleteAll()
+{
+	for (spriteSet::iterator iter = this->mSpriteSet.begin(); iter != this->mSpriteSet.end(); iter++)
+	{
+		delete iter->second;
+		this->mSpriteSet.erase(iter);
 	}
 }
