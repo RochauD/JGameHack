@@ -5,6 +5,7 @@
 Deck::Deck() {
 	int i = 0;						//At the moment putting random cards into the deck.
 									//Could later be changed to a shuffled deck.
+	//cards = {NULL};
 	while (i++ < CARDS_IN_DECK) {
 		cards[i] = Card(rand()%CARDS_IN_DECK);
 	}
