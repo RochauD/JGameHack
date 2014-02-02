@@ -14,7 +14,8 @@ private:
 	sf::RenderWindow* mWindow;
 	sf::Vector2i selectedGrid;
 	sf::Vector2i oldSquare;
-	sf::Sprite* ui[3];
+	sf::Sprite* ui[2];
+	bool toogleUI;
 
 
 
@@ -26,6 +27,7 @@ public:
 	void SetUpGrid(spriteManager* pSpriteManager, sf::RenderWindow* pWindow);
 	void UpdateGrid();
 
+	void ToogleUI();
 
 	grid();
 	~grid();

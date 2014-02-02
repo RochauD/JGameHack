@@ -1,6 +1,16 @@
 #include "stdafx.h"
 #include "unit.h"
 
+
+void unit::SetSpriteManager(spriteManager* pSpriteManager)
+{
+	this->mSpriteManager = pSpriteManager;
+}
+void unit::SetWindow(sf::RenderWindow* pWindow)
+{
+	this->mWindow = pWindow;
+}
+
 unit::unit(int stre, int health, std::string ti, std::string descr) {
 	strength = stre;
 	hp = health;

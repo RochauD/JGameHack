@@ -25,11 +25,11 @@ void grid::SetUpGrid()
 {
 	this->oldSquare.x = -1;
 	this->oldSquare.y = -1;
+	this->toogleUI = false;
 
 	ui[0] = this->mSpriteManager->addNewSprite(&std::string("sword.png"), 10);
-	ui[1] = this->mSpriteManager->addNewSprite(&std::string("sword.png"), 10);
-	ui[2] = this->mSpriteManager->addNewSprite(&std::string("sword.png"), 10);
-	this->mSpriteManager->findSprite(ui[0]);
+	ui[1] = this->mSpriteManager->addNewSprite(&std::string("boot.png"), 10);
+
 
 	for (int i = 0; i < 5; i++)
 	{
@@ -61,7 +61,8 @@ void grid::SetUpGrid(spriteManager* pSpriteManager, sf::RenderWindow* pWindow)
 
 void grid::UpdateGrid()
 {
-	this->selectedGrid = sf::Mouse::getPosition(*this->mWindow);
+	sf::Vector2i curMouse = sf::Mouse::getPosition(*this->mWindow);
+	this->selectedGrid = curMouse;
 
 	if (this->selectedGrid.x >= 300 && this->selectedGrid.x <= 1300)
 	{
@@ -82,10 +83,10 @@ void grid::UpdateGrid()
 				this->mSpriteManager->changeTexture(this->gridArray[this->selectedGrid.y][this->selectedGrid.x].GetSprite(), &std::string("square2.png"), 5);
 				if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 				{
-					
+					ui[0]->setPosition(curMouse.x -25, curMouse.y - 70);
+					ui[1]->setPosition(curMouse.x -25, curMouse.y + 20);
 				}
-				
-				
+								
 				
 				
 				this->oldSquare = this->selectedGrid;
@@ -109,3 +110,16 @@ void grid::UpdateGrid()
 	}
 }
 
+void grid::ToogleUI()
+{
+	if (this->toogleUI == false)
+	{
+		ui[0]->setColor(sf::Color(0, 0, 0, 255));
+		ui[1]->setColor(sf::Color(0, 0, 0, 255));
+	}
+	else
+	{
+		ui[0]->setColor(sf::Color(0, 0, 0, 0));
+		ui[1]->setColor(sf::Color(0, 0, 0, 0));
+	}
+}
