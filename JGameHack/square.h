@@ -12,6 +12,7 @@ private:
 	bool owner;
 	textureManager* mTextureManager;
 	sf::RenderWindow* mWindow;
+	sf::Sprite mSprite;
 
 
 public:

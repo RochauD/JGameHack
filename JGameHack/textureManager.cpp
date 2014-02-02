@@ -53,7 +53,9 @@ void textureManager::deleteTexture(std::string* fileName)
 {
 	if (this->textureMap[*fileName].first == 1)
 	{
+		textureMapType::iterator iter = this->textureMap.find(*fileName);
 		delete textureMap[*fileName].second;
+		this->textureMap.erase(iter);
 	}
 	else
 	{

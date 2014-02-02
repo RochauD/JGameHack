@@ -3,8 +3,11 @@
 
 #include "stdafx.h"
 #include "textureManager.h"
+#include "spriteManager.h"
+#include "grid.h"
 
 textureManager* gTextureManager;
+spriteManager* gSpriteManager;
 sf::RenderWindow* gWindow;
 
 int main(int argc, char* argv[])
@@ -13,12 +16,21 @@ int main(int argc, char* argv[])
 	sf::RenderWindow window(sf::VideoMode(1600, 900), "JGameHack", sf::Style::Fullscreen);
 	gWindow = &window;
 	
-	textureManager lTextureManager;
-	gTextureManager = &lTextureManager;
+	textureManager pTextureManager;
+	gTextureManager = &pTextureManager;
 
 
 	// Initalize texture Handler
 	gTextureManager->setFileDirectory("bin/textures/");
+
+	//Initalize sprite manager
+
+	spriteManager pSpriteManager;
+	gSpriteManager = &pSpriteManager;
+
+	gSpriteManager->SetTextureManager(gTextureManager);
+	gSpriteManager->SetWindow(gWindow);
+
 
 	//initalize background
 	sf::Sprite background;
@@ -26,6 +38,9 @@ int main(int argc, char* argv[])
 	gTextureManager->loadTexture(&std::string("background.png") , &backgroundTex);
 	background.setTexture(backgroundTex);
 	
+	grid gameGrid;
+	gameGrid.SetTextureManager(gTextureManager);
+	gameGrid.SetWindow(gWindow);
 
 
 	sf::Texture testTex;

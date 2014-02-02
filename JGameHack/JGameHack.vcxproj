@@ -81,6 +81,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="grid.h" />
+    <ClInclude Include="spriteManager.h" />
     <ClInclude Include="square.h" />
     <ClInclude Include="textureManager.h" />
     <ClInclude Include="stdafx.h" />
@@ -89,6 +90,7 @@
   <ItemGroup>
     <ClCompile Include="grid.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="spriteManager.cpp" />
     <ClCompile Include="square.cpp" />
     <ClCompile Include="textureManager.cpp" />
     <ClCompile Include="stdafx.cpp">
