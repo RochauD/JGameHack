@@ -51,13 +51,21 @@ void grid::SetUpGrid(spriteManager* pSpriteManager, sf::RenderWindow* pWindow)
 
 void grid::UpdateGrid()
 {
-	sf::Vector2i localPosition = sf::Mouse::getPosition(*this->mWindow);
-	if (localPosition.x >= 300 && localPosition.x <= 1300)
+	this->selectedGrid = sf::Mouse::getPosition(*this->mWindow);
+	this->selectedGrid.x = (this->selectedGrid.x - 300) / 100;
+	this->selectedGrid.y = (this->selectedGrid.y - 100) / 100;
+
+	if ((0 <= this->selectedGrid.x) && (this->selectedGrid.x <= 9) && (0 <= this->selectedGrid.y) && (this->selectedGrid.y <= 4))
 	{
-		if (localPosition.y >= 100 && localPosition.y <= 600)
-		{
-			
-		}
+		//Is in grid; coords are stored in (x,y)
+		// uncomment fo automatic crashes
+		this->mSpriteManager->changeTexture(this->gridArray[this->selectedGrid.y][this->selectedGrid.x].GetSprite(), &std::string("square2.png"), 5);
+		
+	}
+	else
+	{
+		this->selectedGrid.x = -1;
+		this->selectedGrid.y = -1;
 	}
 }
 

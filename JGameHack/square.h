@@ -14,6 +14,7 @@ private:
 	sf::RenderWindow* mWindow;
 	sf::Sprite* mSprite;
 	std::string fileName;
+	std::string fileName2;
 
 public:
 	void SetSpriteManager(spriteManager* pSpriteManager);
@@ -23,6 +24,7 @@ public:
 
 	void SetUp();
 	void SetFileName(std::string fileName);
+	void SetFileName2(std::string fileName);
 
 
 	square();

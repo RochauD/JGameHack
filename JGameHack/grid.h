@@ -12,6 +12,7 @@ private:
 	square gridArray[5][10];
 	spriteManager* mSpriteManager;
 	sf::RenderWindow* mWindow;
+	sf::Vector2i selectedGrid;
 
 
 public:
@@ -21,7 +22,7 @@ public:
 	void SetUpGrid();
 	void SetUpGrid(spriteManager* pSpriteManager, sf::RenderWindow* pWindow);
 	void UpdateGrid();
-	sf::Vector2i GetSquarePosClick(sf::Event::MouseButtonEvent mouse);
+
 
 	grid();
 	~grid();

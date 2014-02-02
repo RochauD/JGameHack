@@ -1,18 +1,21 @@
-#ifndef UNIT_IS_LOADED
-#define UNIT_IS_LOADED
-#include <string>
+#pragma once
+
+#include "stdafx.h"
 //#include "Card.h"
 
-class Unit {
+class unit 
+{
 private:
-	int hp, strength;
-	std::string title, description;
+	int hp;
+	int strength;
+	std::string title;
+	std::string description;
 public:
-	Unit(int, int, std::string, std::string);
+	unit(int, int, std::string, std::string);
 	bool isAlive();
 	void applyDamage(int);
 	int getHP();
 	int getStrength();
 };
 
-#endif
+

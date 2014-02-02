@@ -1,24 +1,25 @@
-#include "Unit.h"
+#include "stdafx.h"
+#include "unit.h"
 
-Unit::Unit(int stre, int health, std::string ti, std::string descr) {
+unit::unit(int stre, int health, std::string ti, std::string descr) {
 	strength = stre;
 	hp = health;
 	title = ti;
 	description = descr;
 }
 
-bool Unit::isAlive() {
+bool unit::isAlive() {
 	return (hp>0);
 }
 
-void Unit::applyDamage(int amount) {
+void unit::applyDamage(int amount) {
 	hp -= amount;
 }
 
-int Unit::getHP() {
+int unit::getHP() {
 	return hp;
 }
 
-int Unit::getStrength() {
+int unit::getStrength() {
 	return strength;
 }
