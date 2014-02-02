@@ -77,6 +77,10 @@ int main(int argc, char* argv[])
 				}
 			}
 		}
+
+		gameGrid.UpdateGrid();
+
+
 		// Clear screen
 		window.clear();
 

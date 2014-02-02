@@ -20,6 +20,8 @@ public:
 
 	void SetUpGrid();
 	void SetUpGrid(spriteManager* pSpriteManager, sf::RenderWindow* pWindow);
+	void UpdateGrid();
+	sf::Vector2i GetSquarePosClick(sf::Event::MouseButtonEvent mouse);
 
 	grid();
 	~grid();

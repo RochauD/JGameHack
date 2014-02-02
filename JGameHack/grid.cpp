@@ -49,3 +49,15 @@ void grid::SetUpGrid(spriteManager* pSpriteManager, sf::RenderWindow* pWindow)
 	}
 }
 
+void grid::UpdateGrid()
+{
+	sf::Vector2i localPosition = sf::Mouse::getPosition(*this->mWindow);
+	if (localPosition.x >= 300 && localPosition.x <= 1300)
+	{
+		if (localPosition.y >= 100 && localPosition.y <= 600)
+		{
+			
+		}
+	}
+}
+
