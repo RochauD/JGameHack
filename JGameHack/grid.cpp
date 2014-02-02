@@ -30,6 +30,7 @@ void grid::SetUpGrid()
 	ui[0] = this->mSpriteManager->addNewSprite(&std::string("sword.png"), 10);
 	ui[1] = this->mSpriteManager->addNewSprite(&std::string("boot.png"), 10);
 
+	uiState = false;
 	ToogleUI();
 
 	for (int i = 0; i < 5; i++)
@@ -82,10 +83,42 @@ void grid::UpdateGrid()
 					}
 				}
 				this->mSpriteManager->changeTexture(this->gridArray[this->selectedGrid.y][this->selectedGrid.x].GetSprite(), &std::string("square2.png"), 5);
+				if (sf::Mouse::isButtonPressed(sf::Mouse::Right))
+				{
+					if (this->uiState == true)
+					{
+						this->ToogleUI();
+						this->uiState = false;
+					}
+				}
 				if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 				{
-					ui[0]->setPosition(curMouse.x -25, curMouse.y - 70);
-					ui[1]->setPosition(curMouse.x -25, curMouse.y + 20);
+					if (this->uiState == false)
+					{
+						ui[0]->setPosition(curMouse.x - 25, curMouse.y - 70);
+						ui[1]->setPosition(curMouse.x - 25, curMouse.y + 20);
+						this->oldMouse = curMouse;
+						this->uiState = true;
+					}
+					else
+					{
+						if (this->oldMouse.x - 25 <= curMouse.x && curMouse.x <= this->oldMouse.x + 25)
+						{
+							if (this->oldMouse.y - 70 <= curMouse.y && curMouse.y <= this->oldMouse.y - 20)
+							{
+								
+								buffer.loadFromFile("bin/sound/dragon.ogg");
+								sound.setBuffer(buffer);
+								sound.play();
+							}
+							else if (this->oldMouse.y + 20 <= curMouse.y && curMouse.y <= this->oldMouse.y + 70)
+							{
+								buffer.loadFromFile("bin/sound/soldier.ogg");
+								sound.setBuffer(buffer);
+								sound.play();
+							}
+						}
+					}
 				}
 								
 				

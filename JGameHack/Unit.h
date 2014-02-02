@@ -12,6 +12,8 @@ private:
 	std::string title;
 	std::string description;
 	sf::Vector2i gridPosition;
+	bool empty;
+	sf::Sprite mSprite;
 
 	spriteManager* mSpriteManager;
 	sf::RenderWindow* mWindow;

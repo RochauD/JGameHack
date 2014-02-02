@@ -41,7 +41,7 @@ void spriteManager::deleteSprite(sf::Sprite* pSprite, std::string* fileName)
 {
 	spriteSet::iterator iter = findSprite(pSprite);
 	this->mTextureManager->deleteTexture(fileName);
-	delete &iter->second;
+	delete iter->second;
 	this->mSpriteSet.erase(iter);
 }
 
