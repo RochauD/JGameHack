@@ -13,6 +13,7 @@ private:
 	spriteManager* mSpriteManager;
 	sf::RenderWindow* mWindow;
 	sf::Vector2i selectedGrid;
+	sf::Vector2i oldSquare;
 
 
 public:

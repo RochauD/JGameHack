@@ -23,6 +23,8 @@ void grid::SetWindow(sf::RenderWindow* pWindow)
 
 void grid::SetUpGrid()
 {
+	this->oldSquare.x = -1;
+	this->oldSquare.y = -1;
 	for (int i = 0; i < 5; i++)
 	{
 		for (int j = 0; j < 10; j++)
@@ -37,6 +39,8 @@ void grid::SetUpGrid()
 }
 void grid::SetUpGrid(spriteManager* pSpriteManager, sf::RenderWindow* pWindow)
 {
+	this->oldSquare.x = -1;
+	this->oldSquare.y = -1;
 	for (int i = 0; i < 5; i++)
 	{
 		for (int j = 0; j < 10; j++)
@@ -52,20 +56,42 @@ void grid::SetUpGrid(spriteManager* pSpriteManager, sf::RenderWindow* pWindow)
 void grid::UpdateGrid()
 {
 	this->selectedGrid = sf::Mouse::getPosition(*this->mWindow);
-	this->selectedGrid.x = (this->selectedGrid.x - 300) / 100;
-	this->selectedGrid.y = (this->selectedGrid.y - 100) / 100;
 
-	if ((0 <= this->selectedGrid.x) && (this->selectedGrid.x <= 9) && (0 <= this->selectedGrid.y) && (this->selectedGrid.y <= 4))
+	if (this->selectedGrid.x >= 300 && this->selectedGrid.x <= 1300)
 	{
-		//Is in grid; coords are stored in (x,y)
-		// uncomment fo automatic crashes
-		this->mSpriteManager->changeTexture(this->gridArray[this->selectedGrid.y][this->selectedGrid.x].GetSprite(), &std::string("square2.png"), 5);
-		
+		if (this->selectedGrid.y >= 100 && this->selectedGrid.y <= 600)
+		{
+			this->selectedGrid.x = (this->selectedGrid.x - 300) / 100;
+			this->selectedGrid.y = (this->selectedGrid.y - 100) / 100;
+
+			if ((0 <= this->selectedGrid.x) && (this->selectedGrid.x <= 9) && (0 <= this->selectedGrid.y) && (this->selectedGrid.y <= 4))
+			{
+				if (oldSquare.x >= 0 && oldSquare.x <= 9)
+				{
+					if (oldSquare.y >= 0 && oldSquare.y <= 4)
+					{
+						this->mSpriteManager->changeTexture(this->gridArray[this->oldSquare.y][this->oldSquare.x].GetSprite(), &std::string("square1.png"), 5);
+					}
+				}
+				this->mSpriteManager->changeTexture(this->gridArray[this->selectedGrid.y][this->selectedGrid.x].GetSprite(), &std::string("square2.png"), 5);
+				this->oldSquare = this->selectedGrid;
+
+			}
+			else
+			{
+				this->mSpriteManager->changeTexture(this->gridArray[this->oldSquare.y][this->oldSquare.x].GetSprite(), &std::string("square1.png"), 5);
+				this->selectedGrid.x = -1;
+				this->selectedGrid.y = -1;
+			}
+		}
+		else 
+		{
+			this->mSpriteManager->changeTexture(this->gridArray[this->oldSquare.y][this->oldSquare.x].GetSprite(), &std::string("square1.png"), 5);
+		}
 	}
 	else
 	{
-		this->selectedGrid.x = -1;
-		this->selectedGrid.y = -1;
+		this->mSpriteManager->changeTexture(this->gridArray[this->oldSquare.y][this->oldSquare.x].GetSprite(), &std::string("square1.png"), 5);
 	}
 }
 

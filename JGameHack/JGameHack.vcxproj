@@ -80,6 +80,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="clickUI.h" />
     <ClInclude Include="grid.h" />
     <ClInclude Include="spriteManager.h" />
     <ClInclude Include="square.h" />
@@ -89,6 +90,7 @@
     <ClInclude Include="unit.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="clickUI.cpp" />
     <ClCompile Include="grid.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="spriteManager.cpp" />
