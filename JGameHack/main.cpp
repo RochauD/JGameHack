@@ -13,7 +13,7 @@ sf::RenderWindow* gWindow;
 int main(int argc, char* argv[])
 {
 	// Create the main window
-	sf::RenderWindow window(sf::VideoMode(1600, 900), "JGameHack");
+	sf::RenderWindow window(sf::VideoMode(1600, 900), "JGameHack", sf::Style::Fullscreen);
 	gWindow = &window;
 	
 	textureManager pTextureManager;
@@ -53,12 +53,7 @@ int main(int argc, char* argv[])
 
 
 
-	sf::Music music;
-	if (!music.openFromFile("bin/sound/HeartOfCourage.ogg"))
-		return -1; // error
-	music.setLoop(true);
 
-	music.play();
 	// Start the game loop
 	while (window.isOpen())
 	{

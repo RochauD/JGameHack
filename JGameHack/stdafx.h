@@ -22,6 +22,8 @@
 #include <string>
 #include <map>
 #include <utility>
+#include <vector> 
+#include <list>
 
 #include <SFML\Graphics.hpp>
 #include <SFML\Audio.hpp>

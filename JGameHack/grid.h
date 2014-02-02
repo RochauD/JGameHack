@@ -22,7 +22,8 @@ private:
 	bool uiState;
 	sf::SoundBuffer buffer;
 	sf::Sound sound;
-
+	sf::SoundBuffer sBArray[5][10];
+	sf::Sound 	sArray[5][10];
 
 
 

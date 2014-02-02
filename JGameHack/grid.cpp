@@ -33,6 +33,61 @@ void grid::SetUpGrid()
 	uiState = false;
 	ToogleUI();
 
+	sBArray[0][0].loadFromFile("bin/sound/sound (1).ogg");
+	sBArray[0][1].loadFromFile("bin/sound/sound (2).ogg");
+	sBArray[0][2].loadFromFile("bin/sound/sound (3).ogg");
+	sBArray[0][3].loadFromFile("bin/sound/sound (4).ogg");
+	sBArray[0][4].loadFromFile("bin/sound/sound (5).ogg");
+	sBArray[0][5].loadFromFile("bin/sound/sound (6).ogg");
+	sBArray[0][6].loadFromFile("bin/sound/sound (7).ogg");
+	sBArray[0][7].loadFromFile("bin/sound/sound (8).ogg");
+	sBArray[0][8].loadFromFile("bin/sound/sound (9).ogg");
+	sBArray[0][9].loadFromFile("bin/sound/sound (10).ogg");
+
+	sBArray[1][0].loadFromFile("bin/sound/sound (11).ogg");
+	sBArray[1][1].loadFromFile("bin/sound/sound (12).ogg");
+	sBArray[1][2].loadFromFile("bin/sound/sound (13).ogg");
+	sBArray[1][3].loadFromFile("bin/sound/sound (14).ogg");
+	sBArray[1][4].loadFromFile("bin/sound/sound (15).ogg");
+	sBArray[1][5].loadFromFile("bin/sound/sound (16).ogg");
+	sBArray[1][6].loadFromFile("bin/sound/sound (17).ogg");
+	sBArray[1][7].loadFromFile("bin/sound/sound (18).ogg");
+	sBArray[1][8].loadFromFile("bin/sound/sound (19).ogg");
+	sBArray[1][9].loadFromFile("bin/sound/sound (20).ogg");
+
+	sBArray[2][0].loadFromFile("bin/sound/sound (21).ogg");
+	sBArray[2][1].loadFromFile("bin/sound/sound (22).ogg");
+	sBArray[2][2].loadFromFile("bin/sound/sound (23).ogg");
+	sBArray[2][3].loadFromFile("bin/sound/sound (24).ogg");
+	sBArray[2][4].loadFromFile("bin/sound/sound (25).ogg");
+	sBArray[2][5].loadFromFile("bin/sound/sound (26).ogg");
+	sBArray[2][6].loadFromFile("bin/sound/sound (27).ogg");
+	sBArray[2][7].loadFromFile("bin/sound/sound (28).ogg");
+	sBArray[2][8].loadFromFile("bin/sound/sound (29).ogg");
+	sBArray[2][9].loadFromFile("bin/sound/sound (30).ogg");
+
+	sBArray[3][0].loadFromFile("bin/sound/sound (31).ogg");
+	sBArray[3][1].loadFromFile("bin/sound/sound (32).ogg");
+	sBArray[3][2].loadFromFile("bin/sound/sound (33).ogg");
+	sBArray[3][3].loadFromFile("bin/sound/sound (34).ogg");
+	sBArray[3][4].loadFromFile("bin/sound/sound (35).ogg");
+	sBArray[3][5].loadFromFile("bin/sound/sound (36).ogg");
+	sBArray[3][6].loadFromFile("bin/sound/sound (37).ogg");
+	sBArray[3][7].loadFromFile("bin/sound/sound (38).ogg");
+	sBArray[3][8].loadFromFile("bin/sound/sound (39).ogg");
+	sBArray[3][9].loadFromFile("bin/sound/sound (40).ogg");
+
+	sBArray[4][0].loadFromFile("bin/sound/sound (41).ogg");
+	sBArray[4][1].loadFromFile("bin/sound/sound (42).ogg");
+	sBArray[4][2].loadFromFile("bin/sound/sound (43).ogg");
+	sBArray[4][3].loadFromFile("bin/sound/sound (44).ogg");
+	sBArray[4][4].loadFromFile("bin/sound/sound (45).ogg");
+	sBArray[4][5].loadFromFile("bin/sound/sound (46).ogg");
+	sBArray[4][6].loadFromFile("bin/sound/sound (47).ogg");
+	sBArray[4][7].loadFromFile("bin/sound/sound (48).ogg");
+	sBArray[4][8].loadFromFile("bin/sound/sound (49).ogg");
+	sBArray[4][9].loadFromFile("bin/sound/sound (50).ogg");
+
 	for (int i = 0; i < 5; i++)
 	{
 		for (int j = 0; j < 10; j++)
@@ -93,6 +148,7 @@ void grid::UpdateGrid()
 				}
 				if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 				{
+					/*
 					if (this->uiState == false)
 					{
 						ui[0]->setPosition(curMouse.x - 25, curMouse.y - 70);
@@ -119,9 +175,11 @@ void grid::UpdateGrid()
 							}
 						}
 					}
+					*/
 				}
 								
-				
+				sArray[this->selectedGrid.y][this->selectedGrid.x].setBuffer(sBArray[this->selectedGrid.y][this->selectedGrid.x]);
+				sArray[this->selectedGrid.y][this->selectedGrid.x].play();
 				
 				this->oldSquare = this->selectedGrid;
 
