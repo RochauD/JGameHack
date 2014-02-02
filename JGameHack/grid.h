@@ -1,7 +1,7 @@
 #pragma once
 #include "stdafx.h"
 #include "square.h"
-#include "textureManager.h"
+#include "spriteManager.h"
 
 
 
@@ -10,15 +10,15 @@ class grid
 private:
 
 	square gridArray[5][10];
-	textureManager* mTextureManager;
+	spriteManager* mSpriteManager;
 	sf::RenderWindow* mWindow;
 
 public:
-	void SetTextureManager(textureManager* pTextureManager);
+	void SetSpriteManager(spriteManager* mSpriteManager);
 	void SetWindow(sf::RenderWindow* pWindow);
 
 	void SetUpGrid();
-	void SetUpGrid(textureManager* pTextureManager, sf::RenderWindow* pWindow);
+	void SetUpGrid(spriteManager* pSpriteManager, sf::RenderWindow* pWindow);
 
 	grid();
 	~grid();

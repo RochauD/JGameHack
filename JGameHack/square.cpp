@@ -12,9 +12,9 @@ square::~square()
 {
 }
 
-void square::SetTextureManager(textureManager* pTextureManager)
+void square::SetSpriteManager(spriteManager* pSpriteManager)
 {
-	this->mTextureManager = pTextureManager;
+	this->mSpriteManager = pSpriteManager;
 }
 void square::SetWindow(sf::RenderWindow* pWindow)
 {

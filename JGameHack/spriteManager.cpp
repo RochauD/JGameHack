@@ -23,14 +23,15 @@ void spriteManager::SetWindow(sf::RenderWindow* pWindow)
 sf::Sprite* spriteManager::addNewSprite(std::string* filename, int zValue)
 {
 	sf::Sprite* curSprite = new sf::Sprite();
-	static sf::Texture* loadTexture;
-	if (!this->mTextureManager->loadTexture(filename, loadTexture))
+	sf::Texture* loadingTexture;
+	if (!this->mTextureManager->loadTexture(filename, &loadingTexture))
 	{
 		EXIT_FAILURE;
+		return NULL;
 	}
 	else
 	{
-		curSprite->setTexture(*loadTexture);
+		curSprite->setTexture(*loadingTexture);
 		typedef std::pair<int, sf::Sprite*> spritePair;
 		this->mSpriteSet.insert(spritePair(zValue, curSprite));
 		return curSprite;

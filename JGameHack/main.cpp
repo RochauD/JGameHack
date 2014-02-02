@@ -13,7 +13,7 @@ sf::RenderWindow* gWindow;
 int main(int argc, char* argv[])
 {
 	// Create the main window
-	sf::RenderWindow window(sf::VideoMode(1600, 900), "JGameHack", sf::Style::Fullscreen);
+	sf::RenderWindow window(sf::VideoMode(1600, 900), "JGameHack");
 	gWindow = &window;
 	
 	textureManager pTextureManager;
@@ -33,30 +33,12 @@ int main(int argc, char* argv[])
 
 
 	//initalize background
-	sf::Sprite background;
-	sf::Texture backgroundTex;
-	gTextureManager->loadTexture(&std::string("background.png") , &backgroundTex);
-	background.setTexture(backgroundTex);
+	gSpriteManager->addNewSprite(&std::string("background.png"), -100);
 	
 	grid gameGrid;
-	gameGrid.SetTextureManager(gTextureManager);
+	gameGrid.SetSpriteManager(gSpriteManager);
 	gameGrid.SetWindow(gWindow);
 
-
-	sf::Texture testTex;
-	sf::Texture testTex2;
-	std::string test("square1.png");
-
-
-
-	gTextureManager->loadTexture(&test, &testTex);
-	gTextureManager->loadTexture(&test, &testTex2);
-
-
-
-
-	sf::Sprite testSprite;
-	testSprite.setTexture(testTex);
 
 	// Start the game loop
 	while (window.isOpen())
@@ -80,8 +62,8 @@ int main(int argc, char* argv[])
 
 		//Draw stuff in here
 
-		window.draw(testSprite);
-		window.draw(background);
+
+		gSpriteManager->DrawAll();
 
 		// Update the window
 		window.display();

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "stdafx.h"
-#include "textureManager.h"
+#include "spriteManager.h"
 
 
 
@@ -10,13 +10,13 @@ class square
 private:
 	int state;
 	bool owner;
-	textureManager* mTextureManager;
+	spriteManager* mSpriteManager;
 	sf::RenderWindow* mWindow;
 	sf::Sprite mSprite;
 
 
 public:
-	void SetTextureManager(textureManager* pTextureManager);
+	void SetSpriteManager(spriteManager* pSpriteManager);
 	void SetWindow(sf::RenderWindow* pWindow);
 
 
