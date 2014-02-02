@@ -49,9 +49,20 @@ int main(int argc, char* argv[])
 	playerZone[1].setSize(sf::Vector2f(200.0, 500.0));
 	playerZone[1].setFillColor(sf::Color(52, 52, 215, 125));
 
+	//setup background music
+
+
+
+	sf::Music music;
+	if (!music.openFromFile("bin/sound/HeartOfCourage.ogg"))
+		return -1; // error
+	music.setLoop(true);
+
+	music.play();
 	// Start the game loop
 	while (window.isOpen())
 	{
+
 		// Process events
 		sf::Event event;
 
@@ -70,7 +81,7 @@ int main(int argc, char* argv[])
 		window.clear();
 
 		//Draw stuff in here
-
+	
 
 		gSpriteManager->DrawAll();
 		window.draw(playerZone[0]);
