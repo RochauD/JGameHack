@@ -25,11 +25,12 @@ void grid::SetUpGrid()
 {
 	this->oldSquare.x = -1;
 	this->oldSquare.y = -1;
-	this->toogleUI = false;
+	this->toogleUI = true;
 
 	ui[0] = this->mSpriteManager->addNewSprite(&std::string("sword.png"), 10);
 	ui[1] = this->mSpriteManager->addNewSprite(&std::string("boot.png"), 10);
 
+	ToogleUI();
 
 	for (int i = 0; i < 5; i++)
 	{
@@ -114,12 +115,12 @@ void grid::ToogleUI()
 {
 	if (this->toogleUI == false)
 	{
-		ui[0]->setColor(sf::Color(0, 0, 0, 255));
-		ui[1]->setColor(sf::Color(0, 0, 0, 255));
+		this->toogleUI = true;
 	}
 	else
 	{
-		ui[0]->setColor(sf::Color(0, 0, 0, 0));
-		ui[1]->setColor(sf::Color(0, 0, 0, 0));
+		ui[0]->setPosition(-100, -100);
+		ui[1]->setPosition(-100, -100);
+		this->toogleUI = false;
 	}
 }
