@@ -13,6 +13,7 @@ private:
 	spriteManager* mSpriteManager;
 	sf::RenderWindow* mWindow;
 
+
 public:
 	void SetSpriteManager(spriteManager* mSpriteManager);
 	void SetWindow(sf::RenderWindow* pWindow);

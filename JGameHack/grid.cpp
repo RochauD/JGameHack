@@ -31,6 +31,7 @@ void grid::SetUpGrid()
 			(this->gridArray[i][j]).SetWindow(this->mWindow);
 			(this->gridArray[i][j]).SetUp();
 			(this->gridArray[i][j]).GetSprite()->setPosition(j  * 100 + 300,i  * 100 + 100);
+			
 		}
 	}
 }

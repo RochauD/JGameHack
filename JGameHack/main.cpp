@@ -40,6 +40,14 @@ int main(int argc, char* argv[])
 	gameGrid.SetWindow(gWindow);
 	gameGrid.SetUpGrid();
 
+	sf::RectangleShape playerZone[2];
+	playerZone[0].setPosition(300, 100);
+	playerZone[0].setSize(sf::Vector2f(200.0, 500.0));
+	playerZone[0].setFillColor(sf::Color(215, 52, 52, 125));
+
+	playerZone[1].setPosition(1100, 100);
+	playerZone[1].setSize(sf::Vector2f(200.0, 500.0));
+	playerZone[1].setFillColor(sf::Color(52, 52, 215, 125));
 
 	// Start the game loop
 	while (window.isOpen())
@@ -65,6 +73,8 @@ int main(int argc, char* argv[])
 
 
 		gSpriteManager->DrawAll();
+		window.draw(playerZone[0]);
+		window.draw(playerZone[1]);
 
 		// Update the window
 		window.display();
