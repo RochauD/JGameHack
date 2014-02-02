@@ -25,6 +25,12 @@ void grid::SetUpGrid()
 {
 	this->oldSquare.x = -1;
 	this->oldSquare.y = -1;
+
+	ui[0] = this->mSpriteManager->addNewSprite(&std::string("sword.png"), 10);
+	ui[1] = this->mSpriteManager->addNewSprite(&std::string("sword.png"), 10);
+	ui[2] = this->mSpriteManager->addNewSprite(&std::string("sword.png"), 10);
+	this->mSpriteManager->findSprite(ui[0]);
+
 	for (int i = 0; i < 5; i++)
 	{
 		for (int j = 0; j < 10; j++)
@@ -74,6 +80,14 @@ void grid::UpdateGrid()
 					}
 				}
 				this->mSpriteManager->changeTexture(this->gridArray[this->selectedGrid.y][this->selectedGrid.x].GetSprite(), &std::string("square2.png"), 5);
+				if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+				{
+					
+				}
+				
+				
+				
+				
 				this->oldSquare = this->selectedGrid;
 
 			}

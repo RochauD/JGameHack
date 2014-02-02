@@ -14,6 +14,8 @@ private:
 	sf::RenderWindow* mWindow;
 	sf::Vector2i selectedGrid;
 	sf::Vector2i oldSquare;
+	sf::Sprite* ui[3];
+
 
 
 public:
