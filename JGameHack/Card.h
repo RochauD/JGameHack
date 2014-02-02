@@ -13,25 +13,21 @@
 
 #define NUMBEROFCARDS 1
 
+
 class Card {
+	int strength, health;
 	std::string name, description;
 	int mana;
-	int damage;
+	int steps;
+	int type;
+	int idnumber;
+public:
+	Card(int);   //Loads card from corresponding file according to id
+	int getType() {return type;}
+	int getMana() {return mana;}
+	int getID () {return idnumber;}
 
-	int strength;
-	int health;
-	int Id;
-
-	std::string image;
-public: 
-	int getMana();
-	int getId ();
-	int use(std::list<Unit>&);
-
-	// name description mana
-	friend std::istream& operator>>(std::istream&, const Card&){
-
-	
+	//Unit summon();
 };
 
 #endif

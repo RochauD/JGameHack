@@ -1,9 +1,4 @@
-#include <string>
-#include <fstream>
-#include <iostream>
-#include <sstream>
-#include <iomanip>
-#include <stdlib.h>
+#include "Card.h"
 
 /*
 	structure of card file:
@@ -17,37 +12,42 @@
 		steps
 */
 
-int Card::getId(){
-	return this->Id;
-}
 
-int Card::getMana(){
-	return this->mana;
-}
+Card::Card(int id) {
 
-std::istream& operator>>(std::istream& os, const Card& aCard){
-  	os >> this->name; // SPELL / UNIT
-  	os >> this->description;
-  	os >> this->mana;
-  	os >> this->damage; // set to 0 if UNIT type
-  	os >> this->strength; // set to 0 if SPELL type
-  	os >> this->health; // set to 0 if SPELL type
-  	os >> this->Id; 
-  	os >> this->image; // the path to the image;
-  	return os;
-}
+	idnumber = id;
 
-int Card::use(std::list<Unit> & unitList){
-	if (this->name.compare("UNIT")){
-		Unit aUnit(this->health, this->damage, this->Id); // add x and y coordinates
-		unitList.push_front(aUnit);
-		return -1;
+	std::ifstream infile;
+	std::stringstream ss;
+	ss << std::setw(3) << std::setfill('0') << id;
+	std::string filename = "card"+ss.str()+".txt";
+	infile.open(filename.c_str());
+
+	std::string line;
+
+	getline(infile, name);
+	getline(infile, description);
+
+	getline(infile, line);
+
+	mana = atoi(line.c_str());
+
+	getline(infile, line);
+
+	if (!line.compare("UNIT")) {
+		type = UNIT;
+		getline(infile, line);
+		strength = atoi(line.c_str());
+		getline(infile, line);
+		health = atoi(line.c_str());
+		getline(infile, line);
+		steps = atoi(line.c_str());
+
+	} else if (!line.compare("SPELL")) {
+		type = SPELL;
+	} else {
+		//exception
 	}
-	else{
-		return this->damage;
-	}
-}
 
-std::string Card::getImage(){
-	return this->image;
+	infile.close();
 }
