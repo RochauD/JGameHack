@@ -4,6 +4,7 @@
 #include <sstream>
 #include <iomanip>
 #include <stdlib.h>
+#include "Unit.h"
 
 #ifndef CARD_IS_INCLUDED
 #define CARD_IS_INCLUDED
@@ -27,7 +28,7 @@ public:
 	int getMana() {return mana;}
 	int getID () {return idnumber;}
 
-	//Unit summon();
+	Unit summon();
 };
 
 #endif

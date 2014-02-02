@@ -51,3 +51,7 @@ Card::Card(int id) {
 
 	infile.close();
 }
+
+Unit Card::summon() {
+	return Unit(strength, health, name, description);
+}

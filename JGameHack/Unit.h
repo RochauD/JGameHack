@@ -1,7 +1,7 @@
 #ifndef UNIT_IS_LOADED
 #define UNIT_IS_LOADED
 #include <string>
-#include "Card.h"
+//#include "Card.h"
 
 class Unit {
 private:
